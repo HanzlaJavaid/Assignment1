@@ -60,10 +60,9 @@ int main()
 		}
 	}
 	keyy=(keyy-13)%66;
-	while(!ifile.eof())
+	string temp="";
+	while(getline(ifile,temp,'\0'))
 	{
-		string temp="";
-		ifile>>temp;
 		infile+=temp;
 	}
 	int j=0;
@@ -83,15 +82,23 @@ int main()
 			}
 		}
 		j=(j-keyy)%66;
-		if(key[j]==0)
-		{
-			cout<<" ";
+		if (infile[i] == '\n'){
+			cout << '\n';
 		}
-		else
-		cout<<characters[j];
+		else{
+		if(infile[i] == 0){
+			cout << " ";
+		}
+		else{
+			if(characters[j]=='0')
+			{
+				cout<<" ";
+			}
+			else
+			cout<<characters[j];
+		
 		decyphertext+=characters[j];
+		}
+	}
 		++i;
 	}
-	
-	//cout<<decyphertext;
-}
